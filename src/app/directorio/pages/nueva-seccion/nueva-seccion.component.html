@@ -1,0 +1,74 @@
+<div class="grid">
+
+    <div class="col-6 sm:col-6">
+      <mat-card class="imgi">
+        <mat-card-content>
+  
+          <form class="grid" [formGroup]="formSeccion" (ngSubmit)="submitForm()">
+  
+            <mat-form-field class="col-12 sm:col-6">
+              <mat-label>Nombre de la sección</mat-label>
+              <input
+                matInput
+                type="text"
+                required
+                formControlName="nombreSeccion1"
+              />
+            </mat-form-field>
+                  
+  
+          </form>
+
+          <input #jpgInput hidden="true" type="file" onclick="this.value=null" (change)="uploadFile($event)" accept=".jpg"/>
+            <button mat-flat-button color="primary" (click)="jpgInput.click()">Cargar imagen</button>
+
+           <div class="row">
+              <br>
+           </div>
+
+          <!-- <div class="flex justify-content-between"> 
+            <button
+              mat-flat-button
+              color="primary"
+              (click)="submitForm()"
+            >
+              <mat-icon>save</mat-icon>
+              Guardar
+            </button>
+          </div> -->
+  
+  
+  
+        </mat-card-content>
+      </mat-card>
+    </div>
+  
+    <div class="col-6 sm:col-6" *ngIf="previsualizacion">
+
+      <mat-card class="imgc">
+        <img [src]="previsualizacion" alt="imagen de portada" mat-card-image>
+      </mat-card>
+  
+    </div>
+
+    <div class="col-6 sm:col-6" *ngIf="!previsualizacion">
+
+      <mat-card class="imgc">
+        <img  width="500px" src="./assets/sin_imagen.jpg" alt="imagen de portada" mat-card-image>
+      </mat-card>
+  
+    </div>
+
+    <div class="flex justify-content-between"> 
+      <button
+        mat-flat-button
+        color="primary"
+        (click)="submitForm()"
+      >
+        <mat-icon>save</mat-icon>
+        Guardar
+      </button>
+    </div>
+
+
+  </div>

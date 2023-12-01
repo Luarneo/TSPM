@@ -1,0 +1,36 @@
+<ng-template #divLoading>
+    <mat-grid-list cols="1">
+        <mat-grid-tile>
+            <mat-spinner></mat-spinner>
+        </mat-grid-tile>
+    </mat-grid-list>
+</ng-template>
+
+Estas en: <a routerLink="/directorio">Directorio</a> >> <a [routerLink]="['/directorio/seccion',anuncioV.idSeccion]">{{nomseccionselect}}</a> >> {{anuncioV.titulo}}
+
+
+<div *ngIf="anuncioV; else divLoading" class="container" style="padding-top: 2%;">
+
+    <div style="position: relative; padding: 10px 25px;">
+    
+        <h1 style="font-size: 40px;">{{anuncioV.titulo}}</h1>
+        <br>
+        <br>
+        <p style="font-size: 20px;"><b>Acerca</b></p>
+        <p style="font-size: 20px;">{{anuncioV.descripcion}} </p>
+        <br>
+        <p style="font-size: 20px;"><b>Contacto</b></p>
+        <p style="font-size: 20px;">{{anuncioV.telefono}}</p>
+        <br>
+        <p style="font-size: 20px;"><b>Ubicación</b></p>
+        <p style="font-size: 20px;">{{anuncioV.direccion}}</p>
+    
+        
+    
+        <ng-image-slider [images]="galeriaVcarrusel" #nav></ng-image-slider>
+    
+    </div>
+   
+  
+</div>
+

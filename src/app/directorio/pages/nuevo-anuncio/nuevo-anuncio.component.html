@@ -1,0 +1,203 @@
+<h1>Agregar Anuncio</h1>
+<div class="grid">
+    <div class="col-6 sm:col-6">
+        <mat-card class="imgi">
+            <mat-card-content>
+                <form action="grid" [formGroup]="formAnuncio" (ngSubmit)="submitForm()" >
+                    <mat-form-field class="col-12 sm:col-12">
+                        <mat-label>Titulo del anuncio</mat-label>
+                        <input 
+                        matInput
+                        type="text"                        
+                        formControlName="titulof"                        
+                        />
+                    </mat-form-field>
+
+                    <mat-form-field class="col-12 sm:col-12">
+                        <mat-label>Descripción</mat-label>
+                        <textarea
+                        rows="4"  
+                        matInput                                      
+                        formControlName="descripcionf"                    
+                        ></textarea>
+                    </mat-form-field>
+
+                    <mat-form-field class="col-3 sm:col-3">
+                        <mat-label>Teléfono</mat-label>
+                        <input 
+                        matInput
+                        type="text"
+                        formControlName="telefonof" 
+                                                
+                        />
+                    </mat-form-field>
+
+                    <!-- <mat-form-field class="col-4 sm:col-4">
+                        <mat-label>Categoría</mat-label>
+                        <mat-select>
+                          <mat-option value="1">Servicio automotriz y motos</mat-option>
+                          <mat-option value="2">Alimentos</mat-option>
+                          <mat-option value="3">Estilistas, Maquillistas y Uñas</mat-option>                         
+                        </mat-select>
+                    </mat-form-field> -->
+
+                    <mat-form-field class="col-4 sm:col-4">
+                        <mat-label>Categoría</mat-label>                      
+                        <mat-select formControlName="opcionseccion" placeholder="Seleccione sección" name="opcionseccion">
+                            <mat-option *ngFor="let op of lista_secciones_base" [value]="op.id">
+                                {{op.nombreSeccion}}
+                            </mat-option>                 
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-checkbox  [formControl]="selectDireccion"  (change)="onChangeDireccion($event)">                    
+                    Ingresar dirección
+                     </mat-checkbox>
+
+                    
+
+                    <mat-form-field class="col-7 sm:col-7">
+                        <mat-label>Calle</mat-label>
+                        <input 
+                        matInput
+                        type="text"
+                        formControlName="callef"
+                                          
+                        />
+                    </mat-form-field>
+
+                    <mat-form-field class="col-4 sm:col-4">
+                        <mat-label>Número</mat-label>
+                        <input 
+                        matInput
+                        type="text"
+                        formControlName="numeroextf"                         
+                        />
+                    </mat-form-field>     
+                    
+                    <mat-form-field class="col-7 sm:col-7">
+                        <mat-label>Colonia</mat-label>
+                        <input 
+                        placeholder="Escriba o seleccione"
+                        matInput
+                        type="text"
+                        formControlName="coloniaf" 
+                        [matAutocomplete]="autobarrios"                        
+                        />
+                        <mat-autocomplete #autobarrios="matAutocomplete">
+                            <mat-option *ngFor="let option of filteredOptionsBarrios | async" [value]="option">
+                                {{option}}
+                              </mat-option>
+                        </mat-autocomplete>
+                    </mat-form-field>                    
+                   
+                    <mat-form-field class="col-7 sm:col-7">
+                        <mat-label>Municipio</mat-label>
+                        <input 
+                        placeholder="Escriba o seleccione"
+                        matInput
+                        type="text"
+                        formControlName="municipiof" 
+                        [matAutocomplete]="automunicipios"                        
+                        />
+                        <mat-autocomplete #automunicipios="matAutocomplete">
+                            <mat-option *ngFor="let option of filteredOptionsMunicipios | async" [value]="option">
+                                {{option}}
+                              </mat-option>
+                        </mat-autocomplete>
+                    </mat-form-field>
+
+                    <mat-form-field class="col-3 sm:col-3">
+                        <mat-label>Estado</mat-label>
+                        <mat-select formControlName="opcionestado">                           
+                          <mat-option value="Tlaxcala">Tlaxcala</mat-option>
+                          <mat-option value="Puebla">Puebla</mat-option>                    
+                        </mat-select>
+                    </mat-form-field>
+
+                    
+
+                </form>
+
+                <div class="row">
+                    <br>
+                 </div>
+      
+                <!-- <div class="flex justify-content-between"> 
+                  <button
+                    mat-flat-button
+                    color="primary"
+                    (click)="submitForm()"
+                  >
+                    <mat-icon>save</mat-icon>
+                    Guardar
+                  </button>
+                </div> -->
+
+
+            </mat-card-content>
+        </mat-card>
+    </div>
+   
+
+    <div class="col-6 sm:col-6 imagen_principal" >
+
+       
+
+        <mat-card class="imgc">
+           <!-- <h3>Portada</h3>  -->
+           <input #jpgInput hidden="true" type="file" onclick="this.value=null" (change)="uploadFile($event)" accept=".jpg"/>
+           <button mat-flat-button color="primary" (click)="jpgInput.click()">Cargar imágen de portada</button>
+           
+           <div class="col-12 sm:col-6" *ngIf="!previsualizacion">           
+    
+            <img  width="450px" aling="center" src="./assets/sin_imagen.jpg" alt="imagen de portada no visible" mat-card-image>
+
+           </div>
+
+           <div class="col-12 sm:col-6" *ngIf="previsualizacion">
+            <img  width="450px" aling="center" [src]="previsualizacion" alt="imagen de portada" mat-card-image>
+
+           </div>
+           
+            <br/>
+          <mat-divider></mat-divider>
+
+
+          <!-- <h3>Galería</h3>  -->
+          <input #jpgInputGal hidden="true" type="file" onclick="this.value=null" (change)="uploadFileGaleria($event)" accept=".jpg" multiple/>
+          <button mat-flat-button color="primary" (click)="jpgInputGal.click()">Cargar imágenes de galería</button>
+
+          
+
+            <div class="gallery-container" *ngIf="previsualizacionGaleria">
+                <div class="gallery__item" *ngFor="let imggal of previsualizacionGaleria">
+                    <img  [src]="imggal" alt="" class="gallery__img">
+                </div>
+                
+
+            </div>
+
+
+                   
+
+              
+
+        </mat-card>
+    
+      </div>
+
+      <div class="flex justify-content-between"> 
+        <button
+          mat-flat-button
+          color="primary"
+          (click)="submitForm()"
+        >
+          <mat-icon>save</mat-icon>
+          Guardar
+        </button>
+      </div>
+     
+</div>
+
+
