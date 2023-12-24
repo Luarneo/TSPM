@@ -3,15 +3,41 @@ import { DirectorioService } from '../../services/directorio.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Seccion } from '../../interfaces/seccion.interface';
 
-import { MatCheckboxChange } from '@angular/material/checkbox';
+import { MatCheckboxChange, MatCheckboxModule } from '@angular/material/checkbox';
 import { Observable, map, startWith } from 'rxjs';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatDividerModule } from '@angular/material/divider';
+import { CommonModule } from '@angular/common';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @Component({
   selector: 'app-nuevo-anuncio',
+  standalone: true,
+  imports:[
+    MatIconModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatCheckboxModule,
+    ReactiveFormsModule,
+    MatSelectModule,
+    MatAutocompleteModule,
+    MatDividerModule,
+    CommonModule,
+    MatInputModule,
+    MatButtonModule,
+  ],
+  providers:[
+    DirectorioService
+  ],
   templateUrl: './nuevo-anuncio.component.html',
   styles: [
     `

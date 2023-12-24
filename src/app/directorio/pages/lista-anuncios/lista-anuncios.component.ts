@@ -4,9 +4,22 @@ import { DirectorioService } from '../../services/directorio.service';
 import { Anuncio } from '../../interfaces/anuncio.interface';
 import { ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs/internal/operators/switchMap';
+import { CommonModule } from '@angular/common';
+import { MatCardModule } from '@angular/material/card';
+import { CardAnuncioComponent } from '../../components/card-anuncio/card-anuncio.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-lista-anuncios',
+  standalone:true,
+  imports:
+  [
+    MatCardModule,
+    CommonModule,
+    CardAnuncioComponent,
+    NgbModule,
+  ],
+ 
   templateUrl: './lista-anuncios.component.html',
   styles: [
     ` a {
@@ -14,7 +27,10 @@ import { switchMap } from 'rxjs/internal/operators/switchMap';
   }
 
     `
-  ]
+  ],
+  providers:[
+    DirectorioService
+  ],
 })
 export class ListaAnunciosComponent implements OnInit {
   

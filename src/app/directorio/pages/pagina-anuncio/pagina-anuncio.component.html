@@ -1,3 +1,5 @@
+
+
 <ng-template #divLoading>
     <mat-grid-list cols="1">
         <mat-grid-tile>
@@ -6,7 +8,8 @@
     </mat-grid-list>
 </ng-template>
 
-Estas en: <a routerLink="/directorio">Directorio</a> >> <a [routerLink]="['/directorio/seccion',anuncioV.idSeccion]">{{nomseccionselect}}</a> >> {{anuncioV.titulo}}
+<!-- Estas en: <a routerLink="/directorio">Directorio</a> >> <a [routerLink]="['/directorio/seccion',anuncioV.idSeccion]">{{nomseccionselect}}</a> >> {{anuncioV.titulo}} -->
+
 
 
 <div *ngIf="anuncioV; else divLoading" class="container" style="padding-top: 2%;">
@@ -24,13 +27,14 @@ Estas en: <a routerLink="/directorio">Directorio</a> >> <a [routerLink]="['/dire
         <br>
         <p style="font-size: 20px;"><b>Ubicación</b></p>
         <p style="font-size: 20px;">{{anuncioV.direccion}}</p>
-    
-        
-    
-        <ng-image-slider [images]="galeriaVcarrusel" #nav></ng-image-slider>
+
+        <!-- <ng-image-slider [images]="galeriaVcarrusel" #nav></ng-image-slider> -->
     
     </div>
+
+
    
-  
+    <!-- <div class="fb-comments" data-href="https://todo-san-pablo-del-monte.web.app/directorio/anuncio/27" data-width="70" data-numposts="7"></div> -->
+    
 </div>
 

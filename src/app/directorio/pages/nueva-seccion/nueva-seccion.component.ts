@@ -1,13 +1,32 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { DirectorioService } from '../../services/directorio.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { ISeccionPost } from '../../interfaces/seccionPost.interface';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { CommonModule } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-nueva-seccion',
+  standalone:true,
+  imports:[
+    MatCardModule,
+    ReactiveFormsModule,
+    MatIconModule,
+    MatFormFieldModule,
+    CommonModule,
+    MatButtonModule,
+    MatInputModule,
+  ],
+  providers:[
+    DirectorioService
+  ],
   templateUrl: './nueva-seccion.component.html',
   styles: [
   `

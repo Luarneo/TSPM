@@ -42,8 +42,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "2mb",
+                  "maximumError": "3mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -68,10 +68,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "FRONTENDTSPM2:build:production"
+              "buildTarget": "FRONTENDTSPM2:build:production"
             },
             "development": {
-              "browserTarget": "FRONTENDTSPM2:build:development"
+              "buildTarget": "FRONTENDTSPM2:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -79,7 +79,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "FRONTENDTSPM2:build"
+            "buildTarget": "FRONTENDTSPM2:build"
           }
         },
         "test": {

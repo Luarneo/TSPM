@@ -1,9 +1,27 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Seccion } from '../../interfaces/seccion.interface';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+
 
 @Component({
   selector: 'card-seccion',
+  standalone: true,
+  imports:[
+    CommonModule,
+    HttpClientModule,
+    NgbModule,
+    MatCardModule,
+    MatButtonModule,
+    MatIconModule,
+    RouterModule
+    
+  ],
   templateUrl: './card-seccion.component.html',
   styles: [
     `

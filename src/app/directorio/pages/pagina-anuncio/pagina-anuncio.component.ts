@@ -5,10 +5,26 @@ import { switchMap } from 'rxjs';
 import { Anuncio, ImagenCarrusel } from '../../interfaces/anuncio.interface';
 import { Galeria } from '../../interfaces/galeria.interface';
 import { Seccion } from '../../interfaces/seccion.interface';
+// import { NgImageSliderModule } from 'ng-image-slider/lib/ng-image-slider.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'pagina-anuncio',
   templateUrl: './pagina-anuncio.component.html',
+  standalone:true,
+  imports:[
+    // NgImageSliderModule,
+    NgbModule,
+    MatGridListModule,
+    MatProgressSpinnerModule,
+    CommonModule
+  ],
+  providers:[
+    DirectorioService
+  ],
   styles: [
     `   
 
@@ -75,20 +91,20 @@ export class PaginaAnuncioComponent implements OnInit{
     }      
     );
 
-        this.activatedRoute.params 
-        .pipe(
-          switchMap(({id}) => this.directorioService.getGaleria(id)),
-        )
-        .subscribe ((galeria:any) => {     
-             this.galeriaVcarrusel = galeria;
-             return this.galeriaVcarrusel                 
-        }      
-        );
+        // this.activatedRoute.params 
+        // .pipe(
+        //   switchMap(({id}) => this.directorioService.getGaleria(id)),
+        // )
+        // .subscribe ((galeria:any) => {     
+        //      this.galeriaVcarrusel = galeria;
+        //      return this.galeriaVcarrusel                 
+        // }      
+        // );
 
 
       
    
-      //  debugger;
+     
         
     
     }

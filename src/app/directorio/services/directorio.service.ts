@@ -9,6 +9,7 @@ import { IAnuncioPost } from '../interfaces/anuncioPost.interface';
 import { Galeria } from '../interfaces/galeria.interface';
 
 @Injectable({providedIn: 'root'})
+
 export class DirectorioService {
 
   private baseUrl: string = environments.baseUrl;
